@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Application Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("http://localhost:8080/image1.jpeg");
+        background-size: cover;
+        height: 100vh;
+      }
+
+      form {
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        padding: 20px;
+        width: 600px;
+        margin: 50px auto;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select,
+      textarea {
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        width: 100%;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      input[name="yesno"] {
+        margin-right: 5px;
+        height: 18px;
+        width: 18px;
+      }
+
+      label1[for="yesno"] {
+        
+        font-size: 14px;
+        margin-top: 10px;
+      }
+      
+      
+      select {
+        height: 40px;
+      }
+
+      textarea {
+        height: 100px;
+      }
+      .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: calc(100vh - 30rem);
+      }
+      .button{
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background-color: #3e8e41;
+      }
+
+      .file-upload {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .file-upload label {
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .file-upload input[type="file"] {
+        display: none;
+      }
+
+      .file-upload span {
+        display: inline-block;
+        margin-left: 10px;
+      }
+     form input[type="Email"]{
+     text-transform: lowercase;
+}
+    </style>
+    <script>
+      function validateForm() {
+        var firstname = document.forms["myForm"]["Firstname"].value;
+        var lastname = document.forms["myForm"]["Lastname"].value;
+        var email = document.forms["myForm"]["Email"].value;
+        var phone = document.forms["myForm"]["Phone"].value;
+        var addressproof = document.forms["myForm"]["Addressproof"].value;
+        var kycCompliant = document.forms["myForm"]["KYC_Compliant"].value;
+        var addressLine1 = document.forms["myForm"]["AddressLine1"].value;
+        var city = document.forms["myForm"]["City"].value;
+        var state = document.forms["myForm"]["State"].value;
+        
+        // Check if First Name and Last Name contain only letters
+        var nameRegex = /^[a-zA-Z]+$/;
+        if (!firstname.match(nameRegex) || !lastname.match(nameRegex)) {
+          alert("First Name and Last Name must contain only letters.");
+          return false;
+        }
+        
+        // Check if Email is valid
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email.match(emailRegex)) {
+          alert("Please enter a valid email address.");
+          return false;
+        }
+        
+        // Check if Phone is valid
+        var phoneRegex = /^\d{10}$/;
+        if (!phone.match(phoneRegex)) {
+          alert("Please enter a valid 10-digit phone number.");
+          return false;
+        }
+        
+        // Check if Address Proof is selected
+        if (addressproof == "") {
+          alert("Please select your Address Proof.");
+          return false;
+        }
+        
+        // Check if KYC Compliant is selected
+        if (kycCompliant != "yes" && kycCompliant != "No") {
+          alert("Please select if you are KYC compliant or not.");
+          return false;
+        }
+        
+        // Check if Address Line 1, City, and State contain only letters, digits, spaces, dots, hyphens, commas
+        var addressRegex = /^[A-Za-z0-9'\.\-\s\,]+$/;
+        if (!addressLine1.match(addressRegex) || !city.match(addressRegex) || !state.match(addressRegex)) {
+          alert("Address Line 1, City, and State must contain only letters, digits, spaces, dots, hyphens, commas.");
+          return false;
+        }
+      }
+    </script>
+    
+  </head>
+  <body>
+    
+    <form action="mainregistrationconnect.php" method="post" enctype="multipart/form-data" name="myForm" onsubmit="return validateForm()">
+
+      <h2>Basic Details</h2>
+
+      <label for="Firstname">First Name:</label>
+      <input type="text" id="Firstname" name="Firstname" placeholder="Enter your first name" required pattern="[a-z,A-Z]*">
+      <label for="Lastname">Last Name:</label>
+      <input type="text" id="Lastname" name="Lastname" placeholder="Enter your last name" required pattern="[a-z,A-Z]*">
+
+      <label for="Email">Email:</label>
+      <input type="Email" id="Email" name="Email" placeholder="Enter your email" required>
+
+      <label for="Phone">Phone:</label>
+      <input type="tel" id="Phone" name="Phone" placeholder="Enter your phone number" required>
+      <label for="Addressproof">Address Proof</label>
+      <select id="Addressproof" name="Addressproof" required>
+        <option value="">--Select Address Proof--</option>
+        <option value="Aadhar card">Aadhar card</option>
+        <option value="Passport">Passport</option>
+        <option value="Driving License">Driving License</option>
+        <option value="Election Commission ID Card">Election Commission ID Card</option>
+        <option value="Ration Card with address">Ration Card with address</option>
+      </select>
+      <label for="KYC_Compliant">Are you a KYC compliant</label>
+      <div>
+        <input type="radio" id="KYC_Compliant" name="KYC_Compliant" value="yes" required>
+        <label1 for="yes">Yes</label1>
+      </div>
+      <div>
+        <input type="radio" id="KYC_Compliant" name="KYC_Compliant" value="No" required>
+        <label1 for="No">No</label1>
+      </div>
+
+   
+
+      <h2>Address Details</h2>
+
+      <label for="AddressLine1">Address Line 1:</label>
+      <input type="text" id="AddressLine1" name="AddressLine1" placeholder="Enter your address" required pattern="[A-Za-z0-9'\.\-\s\,]">
+
+      <label for="AddressLine2">Address Line 2:</label>
+      <input type="text" id="AddressLine2" name="AddressLine2" placeholder="Enter your address">
+
+      <label for="City">City:</label>
+      <input type="text" id="City" name="City" placeholder="Enter your city" required pattern="[A-Za-z0-9'\.\-\s\,]">
+
+      <label for="State">State:</label>
+      <select id="State" name="State" required>
+        <option value="">--Select State--</option>
+        <option value="AP">Andhra Pradesh</option>
+        <option value="AR">Arunachal Pradesh</option>
+        <option value="AS">Assam</option>
+        <option value="BR">Bihar</option>
+        <option value="CT">Chhattisgarh</option>
+        <option value="GA">Goa</option>
+        <option value="GJ">Gujarat</option>
+        <option value="HR">Haryana</option>
+        <option value="HP">Himachal Pradesh</option>
+        <option value="JH">Jharkhand</option>
+        <option value="KA">Karnataka</option>
+        <option value="KL">Kerala</option>
+        <option value="MP">Madhya Pradesh</option>
+        <option value="MH">Maharashtra</option>
+        <option value="MN">Manipur</option>
+        <option value="ML">Meghalaya</option>
+        <option value="MZ">Mizoram</option>
+        <option value="NL">Nagaland</option>
+        <option value="OR">Odisha</option>
+        <option value="PB">Punjab</option>
+        <option value="RJ">Rajasthan</option>
+        <option value="SK">Sikkim</option>
+        <option value="TN">Tamil Nadu</option>
+        <option value="TG">Telangana</option>
+        <option value="TR">Tripura</option>
+        <option value="UT">Uttarakhand</option>
+        <option value="UP">Uttar Pradesh</option>
+        <option value="AN">Andaman and Nicobar Islands</option>
+        <option value="WB">West Bengal</option>
+        <option value="CH">Chandigarh</option>
+        <option value="DN">Dadra and Nagar Haveli and Daman and Diu</option>
+        <option value="DL">The government of NCT of Delhi</option>
+        <option value="JK">Jammu and Kashmir</option>
+        <option value="LD">Lakshadweep</option>
+        <option value="PY">Puducherry</option>
+        
+      </select>
+    
+      <label for="ZipCode">Zip Code:</label>
+      <input type="text" id="ZipCode" name="ZipCode" placeholder="Enter your zip code" required>
+    
+      <h2></h2>
+    
+      <label for="SourceType">Source Type</label>
+      <select id="SourceType" name="SourceType" required>
+        <option value="">How did you get to know about Prasidhi</option>
+        <option value="Newspaper">Newspaper</option>
+        <option value="Family">Family</option>
+        <option value="Friends">Friends</option>
+        <option value="Social Media">Social Media</option>
+        <option value="Google">Google</option>
+        <option value="Journals">Journals</option>
+        <option value="Blogs">Blogs</option>
+        <option value="Client">Client</option>
+        <option value="Other">Other</option>
+      </select>
+    
+      <label for="Service">Service</label>
+      <p>Select the services that you require from Prasidhi Financial Solutions</p>
+      <select id="Service1" name="Service1" required>
+        <option value="">--Comprehensive Planning--</option>
+        <option value="Retirement Planning">Retirement Planning</option>
+        <option value="Tax Planning">Tax Planning</option>
+        <option value="Insurance [Life & Health] Planning">Insurance [Life & Health] Planning</option>
+        <option value="Estate Planning">Estate Planning</option>
+        <option value="Investment Planning">Investment Planning</option>
+        <option value="College Funding / Higher Education Planning">College Funding / Higher Education Planning</option>
+        <option value="Children Marriage Planning">Children Marriage Planning</option>
+        <option value="Debt Riddance">Debt Riddance</option>
+        <option value="Cash Flow Spending Plan">Cash Flow Spending Plan</option>
+        <option value="Review of any existing investments and Plans">Review of any existing investments and Plans</option>
+      </select>
+      <select id="Service2" name="Service2" required>
+        <option value="">--Advice--</option>
+        <option value="Employee Stock Option Advice">Employee Stock Option Advice</option>
+        <option value="Home Loan Prepay/Continue Advice">Home Loan Prepay/Continue Advice</option>
+        <option value="Lump sum Distribution Advice">Lump sum Distribution Advice</option>
+        <option value="Debt Riddance Advice">Debt Riddance Advice</option>
+        <option value="Tax Advice">Tax Advice</option>
+      </select>
+      <select id="Service3" name="Service3" required>
+        <option value="">--Sessions--</option>
+        <option value="Financial Seminars for Social Groups">Financial Seminars for Social Groups</option>
+        <option value="Corporate Employee Financial Education Sessions">Corporate Employee Financial Education Sessions</option>
+      </select>
+      
+      <h2>Upload Documents</h2>
+
+      <label style="margin-bottom:20px" for="uploadaddressproof">Upload Address Proof:</label>
+      <input style="margin-bottom:20px" type="file" id="uploadaddressproof" name="uploadaddressproof" accept=".pdf,.doc,.docx" required>
+      &nbsp;
+      <label style="margin-bottom:20px" for="uploadPanCard">Upload Pan Card:</label>
+      <input style="margin-bottom:20px" type="file" id="uploadPanCard" name="uploadPanCard" accept=".pdf,.doc,.docx" required>
+      <div class="button-container">
+      <button class="button" type="submit" >Submit Application</button>
+      </div>
+
+    </form>
+    
+  </body>
+</html>

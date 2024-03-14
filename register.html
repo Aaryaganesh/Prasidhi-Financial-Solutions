@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTP-08">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>register page</title>
+    
+    
+</head>
+<body>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+*:focus{
+    outline:none;
+}
+
+body{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-image: url("http://localhost:8080/image1.jpeg");
+    background-size: 1530px;
+    background-repeat: no-repeat;
+}
+.heading{
+    font-size: 20px;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 50px;
+    color: black;
+    padding: 10px 10px 5px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.752);
+
+}
+.forms{
+    width:300px;
+    height: auto;
+    color:white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background:white;
+    border-radius: 10px;
+    opacity: 0.9;
+    transition: 0.5s;
+    
+}
+input
+,.submit-btn{
+    width:80%;
+    height:35px;
+    display: block;
+    margin: 20px;
+    border-radius: 5px;
+    background:black;
+    border:2px solid rgba(0, 0, 0, 0.752);
+    color:rgb(255, 255, 255);
+    padding: 15px;
+    transition: 0.7s;
+    
+}
+input::placeholder{
+    color:solid black;
+    font-family: serif;
+}
+
+.submit-btn{
+    width:100px;
+    height: 40px;
+    cursor:pointer;
+    padding: 0 5px;
+    margin:30px auto;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.link{
+    text-align: center;
+    text-decoration: none;
+    text-transform: capitalize;
+    color:black;
+    display:block;
+    margin: 30px 0;
+}
+.link:hover{
+    text-decoration: underline;
+}
+.forms:hover{
+    opacity: 0.8;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.448);
+}
+    </style>
+    <div class="forms">
+        <form action="connect.php" method="post">
+            <h1 class="heading">SIGN-IN</h1>
+            <input type="text"  placeholder="name" autocomplete="off" class="name" name="name" required>
+            <input type="tel"  placeholder="phone number" autocomplete="off"  class="phno" name="number" required>
+            <input type="email"  placeholder="email" autocomplete="off" class="email" name="email"required>
+            <input type="password"  placeholder="password" autocomplete="off" class="password"  name="password"required>
+            <button class="submit-btn" type="submit">SIGN-IN</button>
+        </form>
+        <a class="link" href="reallogin.php">already have an account?.click here</a>
+    </div>
+
+    
+    <script>
+    // Select the form element
+const form = document.querySelector('form');
+
+// Select the input fields
+const phoneNumberInput = form.querySelector('.phno');
+const emailInput = form.querySelector('.email');
+const passwordInput = form.querySelector('.password');
+
+// Define regular expressions for phone number, email, and password validation
+const phoneNumberRegex = /^\d{10}$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[#@!$%*])[A-Za-z\d#@!$%*]{8,}$/;
+
+// Add event listener to the form submit event
+form.addEventListener('submit', (event) => {
+  // Prevent the form from submitting
+  event.preventDefault();
+
+  // Validate phone number
+  if (!phoneNumberRegex.test(phoneNumberInput.value)) {
+    alert('Invalid phone number');
+    return;
+  }
+
+  // Validate email
+  if (!emailRegex.test(emailInput.value)) {
+    alert('Invalid email address');
+    return;
+  }
+
+  // Validate password
+  if (!passwordRegex.test(passwordInput.value)) {
+    alert('Password must contain at least 8 characters, including at least one letter and one number');
+    return;
+  }
+
+  // Submit the form if all input fields are valid
+  form.submit();
+});
+</script>
+
+</body>
+
+</html>

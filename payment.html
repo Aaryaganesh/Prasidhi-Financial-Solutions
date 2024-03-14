@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete Payment</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        background-image: url("pexels.jpg");
+        background-size: cover;
+
+      }
+
+      .container {
+        height: 900px;
+        width: 400px;
+        background-color: #f2f2f2;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        border-bottom-left-radius: 180px;
+        border-top-right-radius: 150px;
+      }
+
+      .main-content {
+        height: 235px;
+        background-color: #E4D0D0;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 80px;
+        border-top: #1e6b30;
+      }
+
+      .text {
+        text-align: center;
+        font-size: 300%;
+        text-decoration: aliceblue;
+        color: rgb(5, 8, 10);
+        padding-top: 100px;
+        order:1;
+      }
+      #message {
+        position: relative;
+        bottom: 620px;
+        text-align: center;
+        color: RED;
+        font-weight: bolder;
+      }
+
+      .course {
+        color: white;
+        font-size: 25px;
+        font-weight: bolder;
+      }
+
+      .card-details {
+        background-color: #f2f2f2;
+        color: black;
+        margin: 10px 30px;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      .card-details p {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .card-details label {
+        font-size: 18px;
+        line-height: 35px;
+      }
+
+      #card-number-field,
+      #expiry-month-field,
+      #expiry-year-field,
+      #cvv-number-field,
+      #card-name-field {
+        width: 100%;
+        height: 35px;
+        margin-bottom: 15px;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+      }
+
+      .submit-now-btn
+      {
+cursor: pointer;
+color: black;
+height: 50px;
+width: 290px;
+border: none;
+margin: 20px 30px;
+background-color: #E4D0D0;
+position: relative;
+border-radius: 25px;
+font-size: 18px;
+text-align: center;
+line-height: 50px;
+left: 25px;
+}
+.submit-now-btn:hover {
+    background-color: #D5B4B4;
+  }
+
+</style>
+</head>
+<body>
+  <script>
+    function validateCardDetails() {
+  var cardNumber = document.getElementById("card-number-field").value;
+  var expiryMonth = document.getElementById("expiry-month-field").value;
+  var expiryYear = document.getElementById("expiry-year-field").value;
+  var cvvNumber = document.getElementById("cvv-number-field").value;
+  var cardName = document.getElementById("card-name-field").value;
+
+  // Validate card number
+  var cardNumberPattern = /^[0-9]{16}$/;
+  if (!cardNumberPattern.test(cardNumber)) {
+    alert("Invalid card number. Please enter a valid 16-digit card number.");
+    return false;
+  }
+
+  // Validate expiry month and year
+  var expiryMonth = document.getElementById('expiry-month-field').value;
+  var expiryYear = document.getElementById('expiry-year-field').value;
+  var today = new Date();
+  var currentYear = today.getFullYear();
+  var currentMonth = today.getMonth() + 1;
+  if (expiryYear < currentYear) {
+    alert("Invalid expiry year.");
+    return false;
+  } else if (expiryYear == currentYear && expiryMonth < currentMonth) {
+    alert("Invalid expiry month.");
+    return false;
+  }
+
+
+
+  // Validate CVV number
+  var cvvNumberPattern = /^[0-9]{3,4}$/;
+  if (!cvvNumberPattern.test(cvvNumber)) {
+    alert("Invalid CVV number. Please enter a valid 3 or 4-digit CVV number.");
+    return false;
+  }
+
+  // Validate card name
+  var cardNamePattern = /^[a-zA-Z ]+$/;
+  if (!cardNamePattern.test(cardName)) {
+    alert("Invalid card name. Please enter a valid name.");
+    return false;
+  }
+
+  // All fields are valid
+  return true;
+}
+
+  </script>
+  <div class="container">
+    <div class="main-content">
+      <div class="text">Complete Payment</div>
+      
+    </div>
+    <form action="redirecting.html" onsubmit="return validateCardDetails();">
+      <div class="card-details">
+        <p>Card Details</p>
+        <label for="card-number-field">Card Number</label>
+        <br />
+        <input
+          type="text"
+          id="card-number-field"
+          name="card-number"
+          placeholder="Enter your card number"
+          required
+        />
+        <label for="expiry-month-field">Expiry Month</label>
+        <br />
+        <select id="expiry-month-field" name="expiry-month" required>
+          <option value="" disabled selected>Select Month</option>
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+        <br />
+        <label for="expiry-year-field">Expiry Year</label>
+        <br />
+        <select id="expiry-year-field" name="expiry-year" required>
+          <option value="" disabled selected>Select Year</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+          <option value="2028">2028</option>
+          <option value="2029">2029</option>
+          <option value="2030">2030</option>
+        </select>
+        <br />
+
+        <br />
+        <label for="cvv-number-field">CVV</label>
+        <br />
+        <input
+          type="password"
+          id="cvv-number-field"
+          name="cvv-number"
+          placeholder="Enter your CVV number"
+          required
+        />
+        <br />
+        <label for="card-name-field">Name on Card</label>
+        <br />
+        <input
+          type="text"
+          id="card-name-field"
+          name="card-name"
+          placeholder="Enter the name on your card"
+          required
+        />
+        <br />
+      </div>
+      
+      <button  class="submit-now-btn" type="submit">Submit Now</button>
+      <div id="message"></div>
+	<script type="text/javascript">
+		var urlParams = new URLSearchParams(window.location.search);
+		var status = urlParams.get('status');
+		if (status == 'success') {
+  document.getElementById('message').innerHTML = "Payment was successful.";
+  var redirectButton = document.createElement("button");
+  redirectButton.innerHTML = "Go back to Prasidhi Financial Solutions";
+  redirectButton.addEventListener("click", function(){
+     window.location.href = "Prasidhi Financial Solutions.php";
+  });
+  document.body.appendChild(redirectButton);
+} else if (status == 'failure') {
+  document.getElementById('message').innerHTML = "Payment failed.";
+  // var tryagain = document.createElement("button");
+  // tryagain.innerHTML = "Click here to try again";
+  // tryagain.addEventListener("click", function(){
+  //    window.location.href = "payment.html";
+  // });
+  // document.body.appendChild(tryagain);
+  var redirectButton = document.createElement("button");
+  redirectButton.innerHTML = "Go back to Prasidhi Financial Solutions";
+  redirectButton.addEventListener("click", function(){
+     window.location.href = "Prasidhi Financial Solutions.php";
+  });
+  document.body.appendChild(redirectButton);
+}
+
+	</script>
+  
+  <!-- <script>
+    function redirectToPage() {
+      window.location.href = "Prasidhi Financial Solutions.php";
+    }
+    </script> -->
+      
+    </form>
+  </div>
+</body>
+</html>

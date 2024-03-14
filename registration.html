@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Application Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url("background image.jpg");
+        background-size: cover;
+        height: 100vh;
+      }
+
+      form {
+        background-color: #f2f2f2;
+        border-radius: 5px;
+        padding: 20px;
+        width: 600px;
+        margin: 50px auto;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      select,
+      textarea {
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        width: 100%;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      input[name="yesno"] {
+        margin-right: 5px;
+        height: 18px;
+        width: 18px;
+      }
+
+      label[for="yesno"] {
+        display: inline-block;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+
+
+      select {
+        height: 40px;
+      }
+
+      textarea {
+        height: 100px;
+      }
+      .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        height: calc(100vh - 30rem);
+      }
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      .file-upload {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .file-upload label {
+        display: inline-block;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .file-upload input[type="file"] {
+        display: none;
+      }
+
+      .file-upload span {
+        display: inline-block;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <h2>Basic Details</h2>
+
+      <label for="name">First Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your first name" required>
+      <label for="name">Last Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your last name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+      <label for="address-proof">Address Proof</label>
+      <select id="address-proof" name="address-proof" required>
+        <option value="">--Select Address Proof--</option>
+        <option value="Aadhar card">Aadhar card</option>
+        <option value="Passport">Passport</option>
+        <option value="Driving License">Driving License</option>
+        <option value="Election Commission ID Card">Election Commission ID Card</option>
+        <option value="Ration Card with address">Ration Card with address</option>
+      </select>
+      <label for="checkbox">Are you a KYC compliant</label>
+      <label>
+        <input type="checkbox" name="yesno" value="yes" required>
+        Yes
+      </label>
+      <label>
+        <input type="checkbox" name="yesno" value="no" required>
+        No
+      </label>
+        
+      <h2>Address Details</h2>
+
+      <label for="address1">Address Line 1:</label>
+      <input type="text" id="address1" name="address1" placeholder="Enter your address" required>
+
+      <label for="address2">Address Line 2:</label>
+      <input type="text" id="address2" name="address2" placeholder="Enter your address">
+
+      <label for="city">City:</label>
+      <input type="text" id="city" name="city" placeholder="Enter your city" required>
+
+      <label for="state">State:</label>
+      <select id="state" name="state" required>
+        <option value="">--Select State--</option>
+        <option value="AP">Andhra Pradesh</option>
+        <option value="AR">Arunachal Pradesh</option>
+        <option value="AS">Assam</option>
+        <option value="BR">Bihar</option>
+        <option value="CT">Chhattisgarh</option>
+        <option value="GA">Goa</option>
+        <option value="GJ">Gujarat</option>
+        <option value="HR">Haryana</option>
+        <option value="HP">Himachal Pradesh</option>
+        <option value="JH">Jharkhand</option>
+        <option value="KA">Karnataka</option>
+        <option value="KL">Kerala</option>
+        <option value="MP">Madhya Pradesh</option>
+        <option value="MH">Maharashtra</option>
+        <option value="MN">Manipur</option>
+        <option value="ML">Meghalaya</option>
+        <option value="MZ">Mizoram</option>
+        <option value="NL">Nagaland</option>
+        <option value="OR">Odisha</option>
+        <option value="PB">Punjab</option>
+        <option value="RJ">Rajasthan</option>
+        <option value="SK">Sikkim</option>
+        <option value="TN">Tamil Nadu</option>
+        <option value="TG">Telangana</option>
+        <option value="TR">Tripura</option>
+        <option value="UT">Uttarakhand</option>
+        <option value="UP">Uttar Pradesh</option>
+        <option value="AN">Andaman and Nicobar Islands</option>
+        <option value="WB">West Bengal</option>
+        <option value="CH">Chandigarh</option>
+        <option value="DN">Dadra and Nagar Haveli and Daman and Diu</option>
+        <option value="DL">The government of NCT of Delhi</option>
+        <option value="JK">Jammu and Kashmir</option>
+        <option value="LD">Lakshadweep</option>
+        <option value="PY">Puducherry</option>
+        
+      </select>
+    
+      <label for="zip">Zip Code:</label>
+      <input type="text" id="zip" name="zip" placeholder="Enter your zip code" required>
+    
+      <h2></h2>
+    
+      <label for="source">Source Type</label>
+      <select id="source" name="source" required>
+        <option value="">How did you get to know about Prasidhi</option>
+        <option value="Newspaper">Newspaper</option>
+        <option value="Family">Family</option>
+        <option value="Friends">Friends</option>
+        <option value="Social Media">Social Media</option>
+        <option value="Google">Google</option>
+        <option value="Journals">Journals</option>
+        <option value="Blogs">Blogs</option>
+        <option value="Client">Client</option>
+        <option value="Other">Other</option>
+      </select>
+    
+      <label for="Service">Service</label>
+      <p>Select the services that you require from Prasidhi Financial Solutions</p>
+      <select id="service" name="service" required>
+        <option value="">--Comprehensive Planning--</option>
+        <option value="Web Developer">Retirement Planning</option>
+        <option value="Data Analyst">Tax Planning</option>
+        <option value="Software Engineer">Insurance [Life & Health] Planning</option>
+        <option value="Product Manager">Estate Planning</option>
+        <option value="Marketing Manager">Investment Planning</option>
+        <option value="Marketing Manager">College Funding / Higher Education Planning</option>
+        <option value="Marketing Manager">Children Marriage Planning</option>
+        <option value="Marketing Manager">Debt Riddance</option>
+        <option value="Marketing Manager">Cash Flow Spending Plan</option>
+        <option value="Marketing Manager">Review of any existing investments and Plans</option>
+      </select>
+      <select id="service" name="service" required>
+        <option value="">--Advice--</option>
+        <option value="Web Developer">Employee Stock Option Advice</option>
+        <option value="Data Analyst">Home Loan Prepay/Continue Advice</option>
+        <option value="Software Engineer">Lump sum Distribution Advice</option>
+        <option value="Product Manager">Debt Riddance Advice</option>
+        <option value="Marketing Manager">Tax Advice</option>
+      </select>
+      <select id="service" name="service" required>
+        <option value="">--Sessions--</option>
+        <option value="Web Developer">Financial Seminars for Social Groups</option>
+        <option value="Data Analyst">Corporate Employee Financial Education Sessions</option>
+      </select>
+      
+      <h2>Upload Documents</h2>
+
+      <label style="margin-bottom:20px" for="address proof">Upload Address Proof:</label>
+      <input style="margin-bottom:20px" type="file" id="address-proof" name="address proof" accept=".pdf,.doc,.docx" required>
+      &nbsp;
+      <label style="margin-bottom:20px" for="Pan card">Upload Pan Card:</label>
+      <input style="margin-bottom:20px" type="file" id="pan-card" name="pan-card" accept=".pdf,.doc,.docx" required>
+      <div class="button-container">
+      <button type="submit" >Submit Application</button>
+      </div>
+    </form>
+  </body>
+</html>    
+    
